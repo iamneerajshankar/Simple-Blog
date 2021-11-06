@@ -1,0 +1,15 @@
+{% extends 'blogs/index.html' %}
+{% load static %}
+{% block content %}
+<div class="container md-3 ">
+<h1>Login...</h1>
+<form method="POST">
+{% csrf_token %}
+{{form.as_p}}
+
+<button class="btn btn-secondary">PLogin</button>
+
+</div>
+
+    <!-- Blog ends-->
+    {% endblock  %}

@@ -1,0 +1,21 @@
+{% extends 'blogs/index.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated%}
+    {% if user.id == post.blog_author.id%}
+<div class="container md-3 ">
+<h1>Delete Post</h1>
+<form method="POST">
+{% csrf_token %}
+Are You sure?
+
+<button class="btn btn-danger">Delete</button>
+
+</div>
+ {%endif%}
+{% else %}
+Please login register or login to add or delete post
+{%endif%}
+
+    <!-- Blog ends-->
+    {% endblock  %}

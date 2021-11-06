@@ -1,0 +1,26 @@
+@media screen and (max-width: 1200px) {
+    .gt-navigation {
+        flex-direction: column;
+        margin-bottom: 23px;
+        margin-top: 23px;
+    }
+    .gt-nav-left {
+        flex-direction: column;
+        text-align: center;
+    }
+    .gt-content-right {
+        display: none;
+    }
+    .gt-form-input {
+        font-size: 15px;
+        margin: 0px 2px;
+    }
+    .gt-feature-post {
+        flex-direction: column;
+    }
+    .gt-article-left img {
+        height: 191px;
+        border: 1px solid black;
+        border-radius: 21px;
+    }
+}

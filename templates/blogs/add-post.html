@@ -1,0 +1,25 @@
+
+{% extends 'blogs/index.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated%}
+<div class="container md-3 ">
+<h1>Add Post...</h1>
+<form method="POST">
+{% csrf_token %}
+{{form.as_p}}
+
+<button class="btn btn-secondary">Post Blog</button>
+
+</div>
+<script>
+var  name = "{{user.id}}";
+document.getElementById("username").value = name;
+</script>
+
+{% else %}
+Please login register or login to add post
+{%endif%}
+
+    <!-- Blog ends-->
+    {% endblock  %}

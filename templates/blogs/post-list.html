@@ -1,0 +1,57 @@
+
+{% extends 'blogs/index.html' %}
+{% load static %}
+{% block content %}
+<!-- Blog Page starts here-->
+    <div class="gt-max-width-1 gt-m-auto">
+        <hr>
+    </div>
+    <div class="gt-content gt-max-width-1 gt-m-auto">
+        <div class="gt-content-left">
+            <h2>This is Blogging websites where you can post your blogs</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. A unde fuga quae odio praesentium voluptatem et, aperiam fugit minima dolor neque minus voluptate impedit facere harum similique, veniam libero inventore nemo iure esse. Soluta?</p>
+        </div>
+        <div class="gt-content-right">
+            <img src="{% static 'img/article.jpg'%}" alt="Blog-image">
+        </div>
+
+    </div>
+
+    <div class="gt-max-width-1 gt-m-auto">
+        <hr>
+    </div>
+    <div class="gt-featured-posts gt-max-width-1 gt-m-auto">
+        <h2>Featured Posts</h2>
+        {% for post in post_list%}
+        <div class="gt-feature-post">
+            <div class="gt-article-left">
+                <img src="{% static 'img/home.svg'%}" alt="">
+            </div>
+            
+            <div class="gt-article-right">
+                <h3>{{post.blog_title}}</h3>
+                <p>{{post.blog_content | slice:":200" | safe}}.....</p>
+                <div class="gt-blog-read">
+                {% if user.is_authenticated%}
+                    
+                    <a class="btn btn-secondary" href="{% url 'article-details' post.pk %}">Read More</a>
+                    {% if user.id == post.blog_author.id%}
+                    <a class="btn btn-primary" href="{% url 'update-post' post.pk %}">Update Post</a>
+                    <a class="btn btn-danger" href="{% url 'delete-post' post.pk %}">Delete</a>
+                    {%endif%}
+                {% else %}
+                    <a class="btn btn-secondary" href="{% url 'article-details' post.pk %}">Read More</a>
+                    
+                {% endif %}
+                    
+                </div>
+
+                <span>{{post.blog_author.first_name}}</span> <span>{{post.blog_author.last_name}}</span>  <span>{{post.blog_date}} | {{post.blog_read_time}} min Read</span> <span> |{{post.blog_tag}}</span>
+            </div>
+        </div>
+        {% endfor%}
+
+        
+    </div>
+    <!-- Blog ends-->
+    {% endblock  %}
